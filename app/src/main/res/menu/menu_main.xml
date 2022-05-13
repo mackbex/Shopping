@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/shoppingFragment"
+        android:icon="@drawable/ic_baseline_home_24"
+        android:title="@string/title_toolbar_home" />
+    <item
+        android:id="@+id/favoriteFragment"
+        android:icon="@drawable/ic_baseline_favorite_border_24"
+        android:title="@string/title_toolbar_favorite" />
+</menu>

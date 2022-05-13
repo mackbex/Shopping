@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/shoppingFragment">
+
+    <fragment
+        android:id="@+id/shoppingFragment"
+        android:name="com.item.shopping.ui.main.ShoppingFragment"
+        android:label="ShoppingFragment"
+        tools:layout="@layout/fragment_shopping"
+        />
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.item.shopping.ui.main.FavoriteFragment"
+        android:label="FavoriteFragment"
+        tools:layout="@layout/fragment_favorite"
+        />
+</navigation>

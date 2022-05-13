@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android/CompanySearch/app/src/main/res/layout/activity_main.xml" value="0.18" />
+        <entry key="..\:/Android/CompanySearch/app/src/main/res/layout/fragment_companies_search.xml" value="0.1" />
+        <entry key="..\:/Android/CompanySearch/app/src/main/res/layout/fragment_company_detail.xml" value="0.20697463768115942" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/drawable/bg_level.xml" value="0.21" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/drawable/bg_maximum_kill.xml" value="0.21" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/drawable/bg_mvp.xml" value="0.3185" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/drawable/ic_arrow_right.xml" value="0.241" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/drawable/ic_lol_top.xml" value="0.21" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/activity_main.xml" value="0.2828125" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/fragment_company.xml" value="0.2667572463768116" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/fragment_company_search.xml" value="0.2667572463768116" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/fragment_history.xml" value="0.33" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/fragment_profile.xml" value="0.33" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/fragment_review.xml" value="0.19300911854103345" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/item_company.xml" value="0.340625" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/item_company_shimmer.xml" value="0.340625" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/item_game.xml" value="0.5" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/item_history.xml" value="0.5" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/item_horizontal_theme.xml" value="0.340625" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/item_horizontal_theme_cardview.xml" value="0.340625" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/item_review.xml" value="0.340625" />
+        <entry key="..\:/Android/MatchHistory/app/src/main/res/layout/item_tiers.xml" value="0.5" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/bg_ace.xml" value="0.2695" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/bg_circle.xml" value="0.165" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/bg_circle_pale.xml" value="0.315" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/bg_maximum_kill.xml" value="0.315" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/bg_mvp.xml" value="0.2695" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/ic_arrow_right.xml" value="0.165" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/ic_baseline_arrow_drop_up_24.xml" value="0.2465" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/ic_lol_bot.xml" value="0.313" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/ic_lol_jng.xml" value="0.313" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/drawable/ic_lol_top.xml" value="0.2155" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/fragment_company.xml" value="0.45364583333333336" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/fragment_company_search.xml" value="0.3104166666666667" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/fragment_review.xml" value="0.3098958333333333" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/fragment_statistics.xml" value="0.3510506798516687" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/item_company.xml" value="0.4003623188405797" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/item_history.xml" value="0.2672239108409321" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/item_horizontal_theme.xml" value="0.4003623188405797" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/item_horizontal_theme_cardview.xml" value="0.24547101449275363" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/item_leagues.xml" value="0.6513761467889908" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/item_match.xml" value="0.44021739130434784" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/item_review.xml" value="0.45364583333333336" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/item_tiers.xml" value="0.4003623188405797" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/layout_analysis.xml" value="0.7218788627935723" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/layout_network_paging_state.xml" value="0.4365942028985507" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/layout_profile.xml" value="0.3510506798516687" />
+        <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/view_profile.xml" value="0.42346014492753625" />
+        <entry key="..\:/Android/mpanySearch/app/src/main/res/layout/activity_main.xml" value="0.24003623188405798" />
+        <entry key="..\:/Android/mpanySearch/app/src/main/res/layout/fragment_companies_search.xml" value="0.24003623188405798" />
+        <entry key="app/src/main/res/drawable/bg_rate_total_avg.xml" value="0.172" />
+        <entry key="app/src/main/res/drawable/menu_selector.xml" value="0.172" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.22721099853515628" />
+        <entry key="app/src/main/res/layout/fragment_company_detail.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/fragment_company_search.xml" value="0.3591485507246377" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/fragment_shopping.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.18958333333333333" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.1640625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
