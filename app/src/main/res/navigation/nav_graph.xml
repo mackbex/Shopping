@@ -7,13 +7,13 @@
 
     <fragment
         android:id="@+id/shoppingFragment"
-        android:name="com.item.shopping.ui.main.ShoppingFragment"
+        android:name="com.item.shopping.ui.main.shopping.ShoppingFragment"
         android:label="ShoppingFragment"
         tools:layout="@layout/fragment_shopping"
         />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.item.shopping.ui.main.FavoriteFragment"
+        android:name="com.item.shopping.ui.main.favorite.FavoriteFragment"
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite"
         />

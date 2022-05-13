@@ -4,5 +4,6 @@
     <string name="err_failed_load_data">데이터 로드에 실패했습니다.</string>
     <string name="title_toolbar_home">홈</string>
     <string name="title_toolbar_favorite">좋아요</string>
+    <string name="content_desc_banner">배너</string>
 </resources>
 

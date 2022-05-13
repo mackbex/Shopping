@@ -1,4 +1,4 @@
-package com.item.shopping.ui.main
+package com.item.shopping.ui.main.favorite
 
 import android.os.Bundle
 import android.view.LayoutInflater

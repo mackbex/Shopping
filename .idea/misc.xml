@@ -62,6 +62,7 @@
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/fragment_shopping.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.18958333333333333" />
+        <entry key="app/src/main/res/layout/item_banner.xml" value="0.2515625" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.1640625" />
       </map>
     </option>
