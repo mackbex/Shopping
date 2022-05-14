@@ -19,6 +19,8 @@
         android:layout_margin="10dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="0dp"
+        android:paddingHorizontal="5dp"
+        android:paddingVertical="10dp"
         app:strokeWidth="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

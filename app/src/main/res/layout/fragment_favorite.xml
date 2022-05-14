@@ -48,11 +48,11 @@
             >
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rc_goods"
+                android:id="@+id/rc_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:listitem="@layout/item_goods"
+                tools:listitem="@layout/item_main_goods"
                 app:spanCount="2"
                 app:layout_constraintTop_toTopOf="parent"
                 />

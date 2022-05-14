@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.item.shopping.R
-import com.item.shopping.databinding.ItemGoodsBinding
+import com.item.shopping.databinding.ItemMainGoodsBinding
 import com.item.shopping.domain.model.Goods
 
 class GoodsAdapter: ListAdapter<Goods, GoodsAdapter.ViewHolder>(ItemDiffCallback()) {
@@ -20,7 +20,7 @@ class GoodsAdapter: ListAdapter<Goods, GoodsAdapter.ViewHolder>(ItemDiffCallback
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_goods,
+                R.layout.item_main_goods,
                 parent,
                 false
             )
@@ -35,7 +35,12 @@ class GoodsAdapter: ListAdapter<Goods, GoodsAdapter.ViewHolder>(ItemDiffCallback
         this.listener = listener
     }
 
-    inner class ViewHolder(private val binding:ItemGoodsBinding) : RecyclerView.ViewHolder(binding.root) {
+    override fun getItemViewType(position: Int): Int {
+        return R.layout.item_main_goods
+    }
+
+
+    inner class ViewHolder(private val binding:ItemMainGoodsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(goods:Goods) {
             binding.setVariable(BR.goods, goods)
             listener?.invoke(goods, binding)

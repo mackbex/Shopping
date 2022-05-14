@@ -3,18 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@+id/nav_graph_home">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.item.shopping.ui.main.home.HomeFragment"
-        android:label="ShoppingFragment"
-        tools:layout="@layout/fragment_home"
-        />
-    <fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.item.shopping.ui.main.favorite.FavoriteFragment"
-        android:label="FavoriteFragment"
-        tools:layout="@layout/fragment_favorite"
-        />
+    <include app:graph="@navigation/nav_graph_home"/>
+    <include app:graph="@navigation/nav_graph_favorite"/>
+
 </navigation>
