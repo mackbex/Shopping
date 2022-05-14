@@ -29,3 +29,4 @@ suspend inline fun <T> getResult(crossinline call: suspend () -> Response<T>): R
 fun <T> error(message: String): Resource<T> {
     return Resource.Failure("Network call has failed for a following reason: $message")
 }
+

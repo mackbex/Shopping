@@ -4,5 +4,8 @@
     <string name="title_toolbar_home">Home</string>
     <string name="title_toolbar_favorite">Favorite</string>
     <string name="content_desc_banner">Banner</string>
+    <string name="unit_price" translatable="false">%,2d</string>
+    <string name="unit_goods_buyging">%,2d buying now</string>
+    <string name="cont_new_goods" translatable="false">NEW</string>
 
 </resources>

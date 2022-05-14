@@ -32,8 +32,8 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
     </style>
-    <style name="radius8dp" parent="">
+    <style name="radius4dp" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">12dp</item>
+        <item name="cornerSize">4dp</item>
     </style>
 </resources>

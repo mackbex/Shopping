@@ -1,5 +1,6 @@
 package com.item.shopping.util.ext
 
+import android.graphics.drawable.Animatable
 import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
@@ -7,6 +8,7 @@ import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.item.shopping.R
@@ -16,15 +18,15 @@ import com.item.shopping.util.getProgressbar
 /**
  * Glide Ext
  */
-fun ImageView.glide(url:String?, endAction:(() -> Unit)? = null) {
+fun ImageView.glidePlane(url:String?, endAction:(() -> Unit)? = null) {
 
     val holder = getProgressbar(this.context).also {
         it.start()
     }
 
     Glide.with(this.context)
+        .asDrawable()
         .load(url ?: kotlin.run { ColorDrawable(ContextCompat.getColor(this.context, R.color.pale_grey)) })
-        .fitCenter()
         .error(ColorDrawable(ContextCompat.getColor(this.context, R.color.pale_grey)))
         .placeholder(holder)
         .addListener(object : RequestListener<Drawable> {
@@ -47,8 +49,12 @@ fun ImageView.glide(url:String?, endAction:(() -> Unit)? = null) {
             ): Boolean {
                 holder.stop()
                 endAction?.invoke()
+                if(resource is Animatable) {
+                    (resource as Animatable).start()
+                }
                 return false
             }
         })
         .into(this)
 }
+

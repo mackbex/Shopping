@@ -29,4 +29,13 @@ class FavoriteFragment : Fragment() {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        with(binding) {
+            lifecycleOwner = viewLifecycleOwner
+
+        }
+
+
+    }
 }

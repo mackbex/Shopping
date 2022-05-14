@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/shoppingFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/shoppingFragment"
-        android:name="com.item.shopping.ui.main.shopping.ShoppingFragment"
+        android:id="@+id/homeFragment"
+        android:name="com.item.shopping.ui.main.home.HomeFragment"
         android:label="ShoppingFragment"
-        tools:layout="@layout/fragment_shopping"
+        tools:layout="@layout/fragment_home"
         />
     <fragment
         android:id="@+id/favoriteFragment"

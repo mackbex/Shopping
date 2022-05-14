@@ -21,8 +21,5 @@
     <color name="azure">#1ea1f7</color>
     <color name="darkish_pink">#fc3b56</color>
     <color name="charcoal_grey">#33383c</color>
-    <color name="white_40">#66ffffff</color>
-    <color name="orange_yellow">#ffa905</color>
-    <color name="green_kda">#5AE792</color>
-    <color name="periwinkle">#8b68ff</color>
+    <color name="grey_900_alpha_100">#64212121</color>
 </resources>
