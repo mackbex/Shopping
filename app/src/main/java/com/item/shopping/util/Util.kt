@@ -33,3 +33,4 @@ fun <T> error(message: String): Resource<T> {
     return Resource.Failure("Network call has failed for a following reason: $message")
 }
 
+

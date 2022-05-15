@@ -21,3 +21,9 @@ fun bindBannerImage(imageView: ImageView, url:String?) {
 fun bindGoodsImage(imageView:ImageView, url:String?) {
     imageView.glidePlane(url)
 }
+
+
+@BindingAdapter("favorite_image")
+fun bindFavoriteImage(imageView:ImageView, url:String?) {
+    imageView.glidePlane(url)
+}

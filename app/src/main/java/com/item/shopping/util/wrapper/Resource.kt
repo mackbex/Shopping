@@ -12,7 +12,7 @@ sealed class Resource<out T> {
 
 inline fun <reified T: Any, reified R: Any> Resource<T>.map(transform: (T) -> R): Resource<R> {
     return when (this) {
-        is Resource.Success -> Resource.Success(transform(data))
+        is Resource.Success -> try {Resource.Success(transform(data)) } catch (e:Exception) { Resource.Failure(e.message)}
         is Resource.Failure -> Resource.Failure(msg)
         is Resource.Loading -> Resource.Loading
     }

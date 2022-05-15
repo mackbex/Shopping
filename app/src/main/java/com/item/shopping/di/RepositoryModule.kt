@@ -1,6 +1,8 @@
 package com.item.shopping.di
 
+import com.item.shopping.data.repository.FavoriteRepositoryImpl
 import com.item.shopping.data.repository.ShoppingRepositoryImpl
+import com.item.shopping.domain.repository.FavoriteRepository
 import com.item.shopping.domain.repository.ShoppingRepository
 import dagger.Binds
 import dagger.Module
@@ -13,5 +15,8 @@ interface RepositoryModule {
 
     @Binds
     fun bindShoppingRepository(impl: ShoppingRepositoryImpl): ShoppingRepository
+
+    @Binds
+    fun bindFavoriteRepository(impl: FavoriteRepositoryImpl) : FavoriteRepository
 
 }

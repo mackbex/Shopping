@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.item.shopping.R
-import com.item.shopping.databinding.ItemMainHeaderBannerBinding
+import com.item.shopping.databinding.ItemHomeHeaderBannerBinding
 import com.item.shopping.domain.model.Banner
 
 class BannerAdapter: ListAdapter<Banner, BannerAdapter.ViewHolder>(ItemDiffCallback()) {
@@ -20,7 +20,7 @@ class BannerAdapter: ListAdapter<Banner, BannerAdapter.ViewHolder>(ItemDiffCallb
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_main_header_banner,
+                R.layout.item_home_header_banner,
                 parent,
                 false
             )
@@ -45,7 +45,7 @@ class BannerAdapter: ListAdapter<Banner, BannerAdapter.ViewHolder>(ItemDiffCallb
     }
 
 
-    inner class ViewHolder(private val binding:ItemMainHeaderBannerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding:ItemHomeHeaderBannerBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(banners:Banner) {
             binding.setVariable(BR.banner, banners)
             binding.executePendingBindings()

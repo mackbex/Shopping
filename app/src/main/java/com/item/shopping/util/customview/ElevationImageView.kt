@@ -1,4 +1,4 @@
-package com.item.shopping.util
+package com.item.shopping.util.customview
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -13,6 +13,9 @@ import androidx.annotation.AttrRes
 import androidx.appcompat.widget.AppCompatImageView
 import com.item.shopping.R
 
+/**
+ * 그림자 효과 이미지뷰
+ */
 open class ElevationImageView : AppCompatImageView {
 
     constructor(context: Context) : super(context) {

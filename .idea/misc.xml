@@ -66,11 +66,15 @@
         <entry key="..\:/Android/Shopping/app/src/main/res/layout/fragment_test.xml" value="0.3296875" />
         <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_banner.xml" value="0.2439209726443769" />
         <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_banner_holder.xml" value="0.315625" />
+        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_favorite_goods.xml" value="0.396286231884058" />
         <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_goods.xml" value="0.4949201741654572" />
+        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_home_goods.xml" value="0.32916666666666666" />
         <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_main_goods.xml" value="0.33645833333333336" />
         <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_main_header.xml" value="0.452445652173913" />
         <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_main_header_banner.xml" value="0.452445652173913" />
+        <entry key="..\:/Android/Shopping/app/src/main/res/layout/layout_network_paging_state.xml" value="0.22916666666666666" />
         <entry key="..\:/Android/Shopping/app/src/main/res/menu/menu_main.xml" value="0.4938461538461538" />
+        <entry key="..\:/Android/Shopping/app/src/main/res/xml/network_security_config.xml" value="0.32916666666666666" />
         <entry key="..\:/Android/mpanySearch/app/src/main/res/layout/activity_main.xml" value="0.24003623188405798" />
         <entry key="..\:/Android/mpanySearch/app/src/main/res/layout/fragment_companies_search.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/drawable/bg_rate_total_avg.xml" value="0.172" />

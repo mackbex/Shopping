@@ -1,7 +1,6 @@
 package com.item.shopping.ui.main.home
 
 import android.annotation.SuppressLint
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -10,7 +9,7 @@ import androidx.lifecycle.*
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.item.shopping.R
-import com.item.shopping.databinding.ItemMainHeaderBinding
+import com.item.shopping.databinding.ItemHomeHeaderBinding
 import com.item.shopping.domain.model.Banner
 import com.item.shopping.ui.main.home.banner.BannerAdapter
 import kotlinx.coroutines.Job
@@ -21,7 +20,7 @@ import kotlinx.coroutines.launch
 class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
 
     private var banners:List<Banner> = listOf()
-    private var listener: ((banners: List<Banner>, binding: ItemMainHeaderBinding) -> Unit)? = null
+    private var listener: ((banners: List<Banner>, binding: ItemHomeHeaderBinding) -> Unit)? = null
     private val bannerAdapter by lazy { BannerAdapter() }
     private var viewPageStates: HashMap<Int, Int> = HashMap()
 
@@ -39,7 +38,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.item_main_header,
+                R.layout.item_home_header,
                 parent,
                 false
             )
@@ -69,7 +68,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
             }
         }
 
-    fun setPostInterface(listener: ((banners:List<Banner>, binding:ItemMainHeaderBinding) -> Unit)?) {
+    fun setPostInterface(listener: ((banners:List<Banner>, binding:ItemHomeHeaderBinding) -> Unit)?) {
         this.listener = listener
     }
 
@@ -85,7 +84,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
         super.onViewRecycled(holder)
     }
 
-    inner class ViewHolder(private val binding:ItemMainHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding:ItemHomeHeaderBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(banners:List<Banner>, holderPosition:Int) {
 
@@ -144,7 +143,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
     }
 
     //Lifecycle 이용한 자동스크롤.
-    fun scrollJobCreate(binding: ItemMainHeaderBinding) {
+    fun scrollJobCreate(binding: ItemHomeHeaderBinding) {
         autoScrollBannerJob = lifecycleOwner.lifecycleScope.launch {
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 delay(AUTO_SCROLL_BANNER_INTERVAL)
@@ -156,7 +155,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
     }
 
     override fun getItemViewType(position: Int): Int {
-        return R.layout.item_main_header
+        return R.layout.item_home_header
     }
 
     override fun getItemCount(): Int = if(banners.isEmpty())  0 else 1

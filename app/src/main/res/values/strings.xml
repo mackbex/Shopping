@@ -7,5 +7,7 @@
     <string name="unit_price" translatable="false">%,2d</string>
     <string name="unit_goods_buyging">%,2d buying now</string>
     <string name="cont_new_goods" translatable="false">NEW</string>
+    <string name="btn_retry" translatable="false">Retry</string>
+    <string name="err_failed_set_favorite">Failed to add/remove favorite</string>
 
 </resources>

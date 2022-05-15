@@ -7,7 +7,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 @OptIn(ExperimentalCoroutinesApi::class)
 class ApiTest {
     private val okHttpClient by lazy { NetworkModule.provideOkHttpClient() }
-    private val retrofit by lazy { NetworkModule.provideLoLRetrofit(okHttpClient) }
+    private val retrofit by lazy { NetworkModule.provideShoppingRetrofit(okHttpClient) }
     private val service by lazy { NetworkModule.provideShoppingService(retrofit) }
     private val shoppingDataSource = ShoppingDataSource(service)
 

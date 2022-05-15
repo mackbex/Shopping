@@ -1,5 +1,6 @@
 package com.item.shopping.domain.model
 
+
 data class Goods(
     val id:Int,
     val name:String,
@@ -8,6 +9,6 @@ data class Goods(
     val sellCount:Int,
     val price:Int,
     val actualPrice:Int,
-    val isFavorite:Boolean,
-    val discount:Int
+    var isFavorite:Boolean,
+    var discount:Int
 )

@@ -40,12 +40,10 @@ object NetworkModule {
         val sslContext = SSLContext.getInstance("TLS", "Conscrypt")
         sslContext.init(null, arrayOf(tm), null)
 
-        val spec = ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
-            .build()
 
         val client = OkHttpClient.Builder()
             .sslSocketFactory(InternalSSLSocketFactory(sslContext.socketFactory), tm)
-            .connectionSpecs(Collections.singletonList(spec))
+            .connectionSpecs(listOf(ConnectionSpec.CLEARTEXT, ConnectionSpec.MODERN_TLS))
             .readTimeout(10, TimeUnit.SECONDS)
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
@@ -62,7 +60,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideLoLRetrofit(
+    fun provideShoppingRetrofit(
         okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)

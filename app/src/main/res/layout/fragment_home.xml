@@ -10,7 +10,7 @@
         <import type="android.view.View" />
 
         <variable
-            name="viewModel"
+            name="vm"
             type="com.item.shopping.ui.main.home.HomeViewModel" />
 
 
@@ -53,13 +53,14 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rc_main"
+                    app:itemAnimator="@{null}"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
                     app:spanCount="2"
-                    tools:listitem="@layout/item_main_goods" />
+                    tools:listitem="@layout/item_home_goods" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

@@ -125,6 +125,13 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
 
     /**
+     * Room
+     */
+    implementation "androidx.room:room-ktx:2.4.2"
+    kapt "androidx.room:room-compiler:2.4.2"
+    kapt "org.xerial:sqlite-jdbc:3.36.0"
+
+    /**
      * Paging 3
      */
     implementation "androidx.paging:paging-runtime-ktx:3.1.1"

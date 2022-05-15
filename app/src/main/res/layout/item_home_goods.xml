@@ -43,7 +43,7 @@
                 tools:src="@color/white" />
 
 
-            <com.item.shopping.util.ElevationImageView
+            <com.item.shopping.util.customview.ElevationImageView
                 android:id="@+id/btn_favorite"
                 android:layout_width="26dp"
                 android:layout_height="26dp"
