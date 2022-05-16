@@ -137,7 +137,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 delay(AUTO_SCROLL_BANNER_INTERVAL)
                 ensureActive()
-                Log.d("TEST","BANNER_RUNNING")
+//                Log.d("TEST","BANNER_RUNNING")
                 binding.vpBanner.setCurrentItem(binding.vpBanner.currentItem + 1, true)
                 autoScrollBannerJob.cancel()
             }

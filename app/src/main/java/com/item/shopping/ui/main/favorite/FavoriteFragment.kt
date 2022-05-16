@@ -60,7 +60,6 @@ class FavoriteFragment : Fragment() {
             with(rcFavorite) {
                 setHasFixedSize(true)
                 adapter = favoriteAdapter.apply {
-//                    stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.ALLOW
                     addLoadStateListener {
                         if(it.append is LoadState.NotLoading) {
                             swipeFavorite.isRefreshing = false

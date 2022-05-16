@@ -71,11 +71,9 @@ class HomeFragment:Fragment() {
 
                 with(goodsAdapter) {
 
-//                    stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.ALLOW
                     setPostInterface { goods, goodsBinding ->
                         goodsBinding.btnFavorite.setOnClickListener {
                             sharedViewModel.updateFavorite(goods)
-//                            sharedViewModel.notifyFavoriteChanged()
                         }
                     }
                     /**
