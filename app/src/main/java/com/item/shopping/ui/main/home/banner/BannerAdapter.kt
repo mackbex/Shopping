@@ -15,7 +15,6 @@ class BannerAdapter: ListAdapter<Banner, BannerAdapter.ViewHolder>(ItemDiffCallb
 
     private var actualSize = 0
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             DataBindingUtil.inflate(
@@ -26,7 +25,6 @@ class BannerAdapter: ListAdapter<Banner, BannerAdapter.ViewHolder>(ItemDiffCallb
             )
         )
     }
-
 
     override fun submitList(list: List<Banner>?) {
         val infiniteList = list?.let {

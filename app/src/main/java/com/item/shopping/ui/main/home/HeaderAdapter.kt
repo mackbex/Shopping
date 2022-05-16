@@ -1,6 +1,7 @@
 package com.item.shopping.ui.main.home
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -51,23 +52,10 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")
     fun setItem(list: List<Banner>, lifecycleOwner: LifecycleOwner) {
         this.lifecycleOwner = lifecycleOwner
-        lifecycleOwner.lifecycle.removeObserver(observe)
-        lifecycleOwner.lifecycle.addObserver(observe)
         banners = list
         notifyDataSetChanged()
     }
 
-    /**
-     * 자동스크롤 collect 관리를 위한 옵저버
-     */
-    private val observe = LifecycleEventObserver { _, event ->
-            when(event) {
-                Lifecycle.Event.ON_STOP -> {
-                    if(::autoScrollBannerJob.isInitialized)
-                        autoScrollBannerJob.cancel()
-                }
-            }
-        }
 
     fun setPostInterface(listener: ((banners:List<Banner>, binding:ItemHomeHeaderBinding) -> Unit)?) {
         this.listener = listener
@@ -149,10 +137,21 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 delay(AUTO_SCROLL_BANNER_INTERVAL)
                 ensureActive()
+                Log.d("TEST","BANNER_RUNNING")
                 binding.vpBanner.setCurrentItem(binding.vpBanner.currentItem + 1, true)
                 autoScrollBannerJob.cancel()
             }
         }
+    }
+
+    fun stopAutoBannerScrolling() {
+        if(::autoScrollBannerJob.isInitialized)
+            autoScrollBannerJob.cancel()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun resumeAutoBannerScrolling() {
+        notifyDataSetChanged()
     }
 
     override fun getItemViewType(position: Int): Int {

@@ -56,5 +56,5 @@ fun GoodsResponse.mapToDomain() = Goods(
     price = this.price,
     actualPrice = this.actualPrice,
     isFavorite = false,
-    discount = 0
+    discount = if(this.actualPrice > 0) ((this.actualPrice - this.price) / this.actualPrice.toFloat() * 100).toInt() else 0
 )

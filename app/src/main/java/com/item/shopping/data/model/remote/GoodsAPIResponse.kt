@@ -1,8 +1,6 @@
 package com.item.shopping.data.model.remote
 
 import com.google.gson.annotations.SerializedName
-import com.item.shopping.data.model.remote.GoodsResponse
-import com.item.shopping.data.model.remote.mapToDomain
 import com.item.shopping.domain.model.Goods
 
 

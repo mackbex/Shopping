@@ -32,11 +32,8 @@ class GoodsPagingSource constructor(
 
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Goods> = withContext(defaultDispatcher) {
-        var page = params.key ?: 0
-
-
+        val page = params.key ?: 0
         return@withContext try {
-
             val goods = if(page == 0) {
                 shoppingDataSource.getMainItem().map { it.goods }
             }
@@ -69,17 +66,13 @@ class GoodsPagingSource constructor(
         }
     }
 
-    //paging Data로 변환 및 할인 데이터 계산
+    //paging Data로 변환
     fun getPagingData(list:List<GoodsResponse>):List<Goods> {
-        return list.map {
-            it.mapToDomain().apply {
-                discount = ((it.actualPrice - it.price) / it.actualPrice.toFloat() * 100).toInt()
-            }
-        }
+        return list.map { it.mapToDomain() }
     }
 
     //Favorite 확인
-    suspend fun checkFavorites(list:List<Goods>):List<Goods> {
+    private suspend fun checkFavorites(list:List<Goods>):List<Goods> {
         if(list.isEmpty()) return list
         val favoriteList = favoriteDataSource.getFavoritesById(list.map { it.id })
         return list.apply{

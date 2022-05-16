@@ -50,7 +50,7 @@ class GoodsAdapter: PagingDataAdapter<Goods, GoodsAdapter.ViewHolder>(ItemDiffCa
 
     private class ItemDiffCallback : DiffUtil.ItemCallback<Goods>() {
         override fun areItemsTheSame(oldItem: Goods, newItem: Goods): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.id == newItem.id && oldItem.isFavorite == newItem.isFavorite
         }
 
         override fun areContentsTheSame(oldItem: Goods, newItem: Goods): Boolean {

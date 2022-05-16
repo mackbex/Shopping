@@ -3,9 +3,7 @@ package com.item.shopping.data.source.local.favorite
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.item.shopping.data.model.local.mapToFavorite
-import com.item.shopping.data.source.local.dao.FavoriteDao.Companion.FAVORITE_PAGE_SIZE
 import com.item.shopping.domain.model.Favorite
-import com.item.shopping.domain.model.Goods
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import java.lang.Exception

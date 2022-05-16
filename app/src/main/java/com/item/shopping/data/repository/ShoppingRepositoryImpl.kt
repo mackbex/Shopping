@@ -29,7 +29,7 @@ class ShoppingRepositoryImpl @Inject constructor(
         return@withContext res.map { it.mapToDomain() }
     }
 
-    override fun getGoods(lastId:Int): Flow<PagingData<Goods>> {
+    override fun getGoods(): Flow<PagingData<Goods>> {
          return Pager(
             config = PagingConfig(
                 pageSize = GOODS_PAGE_SIZE,

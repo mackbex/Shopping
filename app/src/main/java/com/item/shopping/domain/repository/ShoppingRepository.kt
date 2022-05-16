@@ -8,5 +8,5 @@ import kotlinx.coroutines.flow.Flow
 
 interface ShoppingRepository {
     suspend fun getMainItem(): Resource<MainItem>
-    fun getGoods(lastId:Int): Flow<PagingData<Goods>>
+    fun getGoods(): Flow<PagingData<Goods>>
 }

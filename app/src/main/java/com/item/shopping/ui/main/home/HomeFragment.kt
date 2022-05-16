@@ -1,12 +1,12 @@
 package com.item.shopping.ui.main.home
 
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -14,9 +14,9 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.item.shopping.R
 import com.item.shopping.databinding.FragmentHomeBinding
+import com.item.shopping.ui.main.SharedViewModel
 import com.item.shopping.util.autoCleared
 import com.item.shopping.util.wrapper.Resource
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,6 +28,7 @@ class HomeFragment:Fragment() {
 
     private var binding: FragmentHomeBinding by autoCleared()
     private val viewModel: HomeViewModel by viewModels()
+    private val sharedViewModel:SharedViewModel by activityViewModels()
 
     private val headerAdapter:HeaderAdapter by lazy { HeaderAdapter() }
     private val goodsAdapter:GoodsAdapter by lazy { GoodsAdapter() }
@@ -70,10 +71,11 @@ class HomeFragment:Fragment() {
 
                 with(goodsAdapter) {
 
-                    stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
+//                    stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.ALLOW
                     setPostInterface { goods, goodsBinding ->
                         goodsBinding.btnFavorite.setOnClickListener {
-                            this@HomeFragment.viewModel.updateFavorite(goods)
+                            sharedViewModel.updateFavorite(goods)
+//                            sharedViewModel.notifyFavoriteChanged()
                         }
                     }
                     /**
@@ -113,12 +115,21 @@ class HomeFragment:Fragment() {
         initObservers()
     }
 
+    override fun onHiddenChanged(hidden: Boolean) {
+        super.onHiddenChanged(hidden)
+        if (hidden) {
+            headerAdapter.stopAutoBannerScrolling()
+        }
+        else {
+            headerAdapter.resumeAutoBannerScrolling()
+        }
+    }
 
     private fun initObservers() {
-        viewModel.updateFavoriteLiveData.observe(viewLifecycleOwner) {
+
+        sharedViewModel.updateFavoriteLiveData.observe(viewLifecycleOwner) {
             when(it) {
                 is Resource.Success -> {
-//                    goodsAdapter.refresh()
                     val itemIdx = goodsAdapter.snapshot().indexOfFirst { snapshot ->
                         snapshot?.id == it.data.id
                     }
@@ -155,7 +166,7 @@ class HomeFragment:Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {
                     viewModel.getGoods().collectLatest { pagingData ->
-                        goodsAdapter.submitData(pagingData)
+                        goodsAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
                     }
                 }
             }

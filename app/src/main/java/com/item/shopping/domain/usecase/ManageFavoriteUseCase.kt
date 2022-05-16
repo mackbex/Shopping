@@ -1,6 +1,5 @@
 package com.item.shopping.domain.usecase
 
-import com.item.shopping.domain.model.Favorite
 import com.item.shopping.domain.model.Goods
 import com.item.shopping.domain.repository.FavoriteRepository
 import com.item.shopping.util.wrapper.Resource

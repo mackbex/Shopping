@@ -1,9 +1,6 @@
 package com.item.shopping.util
 
 import android.content.Context
-import android.content.ContextWrapper
-import android.view.View
-import androidx.lifecycle.LifecycleOwner
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.item.shopping.util.wrapper.Resource
 import retrofit2.Response

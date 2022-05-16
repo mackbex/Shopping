@@ -1,10 +1,8 @@
 package com.item.shopping.ui
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.plusAssign
 import androidx.navigation.ui.AppBarConfiguration
@@ -28,20 +26,6 @@ class MainActivity : AppCompatActivity(){
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//
-//        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-//        navController = navHostFragment.navController
-//
-//        val navigator = KeepStateNavigator(this, navHostFragment.childFragmentManager, R.id.nav_host_fragment)
-//        navController.navigatorProvider.addNavigator(navigator)
-//
-//        binding.navBottom.setupWithNavController(navController)
-
-//        appBarConfiguration = AppBarConfiguration(
-//            setOf(R.id.homeFragment, R.id.favoriteFragment)
-//        )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-
 
         // get fragment
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
