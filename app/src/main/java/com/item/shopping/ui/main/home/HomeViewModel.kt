@@ -18,7 +18,7 @@ class HomeViewModel @Inject constructor(
     private val manageFavoriteUseCase: ManageFavoriteUseCase
 ) : ViewModel() {
 
-    private var _bannerLiveData = SingleLiveEvent<Resource<MainItem>>().apply { value = Resource.Loading }
+    private var _bannerLiveData = MutableLiveData<Resource<MainItem>>().apply { value = Resource.Loading }
     val bannerLiveData:LiveData<Resource<MainItem>> = _bannerLiveData
     private var _updateFavoriteLiveData = SingleLiveEvent<Resource<Goods>>().apply { value = Resource.Loading }
     val updateFavoriteLiveData:LiveData<Resource<Goods>> = _updateFavoriteLiveData
@@ -29,6 +29,7 @@ class HomeViewModel @Inject constructor(
 
     fun getMainItems() {
         viewModelScope.launch {
+            _bannerLiveData.postValue(Resource.Loading)
             _bannerLiveData.postValue(getMainPageListsUseCase.getMainItem())
         }
     }

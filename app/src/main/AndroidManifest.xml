@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shopping">
         <activity
-            android:name="com.item.shopping.MainActivity"
+            android:name="com.item.shopping.ui.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.Shopping.NoActionBar">
             <intent-filter>

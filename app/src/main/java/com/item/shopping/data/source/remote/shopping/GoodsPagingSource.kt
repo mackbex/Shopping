@@ -2,6 +2,7 @@ package com.item.shopping.data.source.remote.shopping
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.item.shopping.data.model.remote.GoodsResponse
 import com.item.shopping.data.model.remote.mapToDomain
 import com.item.shopping.data.source.local.favorite.FavoriteDataSource
 import com.item.shopping.data.source.remote.service.ShoppingService.Companion.GOODS_PAGE_SIZE
@@ -22,12 +23,8 @@ class GoodsPagingSource constructor(
 ): PagingSource<Int, Goods>() {
 
 
-    private var lastId = 0
-
     override fun getRefreshKey(state: PagingState<Int, Goods>): Int? {
         return state.anchorPosition?.let { position ->
-
-//            (position / SHOPPING_PAGE_SIZE) * SHOPPING_PAGE_SIZE
             state.closestPageToPosition(position)?.prevKey?.plus(GOODS_PAGE_SIZE)
                 ?: state.closestPageToPosition(position)?.nextKey?.minus(GOODS_PAGE_SIZE)
         }
@@ -40,7 +37,7 @@ class GoodsPagingSource constructor(
 
         return@withContext try {
 
-            val goods = if(lastId == 0) {
+            val goods = if(page == 0) {
                 shoppingDataSource.getMainItem().map { it.goods }
             }
             else {
@@ -50,29 +47,11 @@ class GoodsPagingSource constructor(
             when(goods) {
                 is Resource.Success -> {
 
-                    var nextKey:Int? = null
-
-                    val data:List<Goods> = if(goods.data.isNotEmpty()) {
-
-                        //paging Data로 변환 및 할인 데이터 계산
-                        val data = goods.data.map {
-                            it.mapToDomain().apply {
-                                discount = ((it.actualPrice - it.price) / it.actualPrice.toFloat() * 100).toInt()
-                            }
-                        }
-
-                        //Favorite 확인
-                        val favoriteList = favoriteDataSource.getFavoritesById(data.map { it.id })
-
-                        data.map {
-                            it.isFavorite = favoriteList.contains(it.id)
-                        }
-                        lastId = data.last().id
-                        nextKey = lastId
-                        data
-                    }
-                    else {
-                        listOf()
+                    val data = checkFavorites(getPagingData(goods.data))
+                    val nextKey = if(data.isEmpty()) {
+                        null
+                    } else {
+                        data.last().id
                     }
 
                     LoadResult.Page(
@@ -87,6 +66,26 @@ class GoodsPagingSource constructor(
             }
         } catch (e: Exception) {
             return@withContext LoadResult.Error(e)
+        }
+    }
+
+    //paging Data로 변환 및 할인 데이터 계산
+    fun getPagingData(list:List<GoodsResponse>):List<Goods> {
+        return list.map {
+            it.mapToDomain().apply {
+                discount = ((it.actualPrice - it.price) / it.actualPrice.toFloat() * 100).toInt()
+            }
+        }
+    }
+
+    //Favorite 확인
+    suspend fun checkFavorites(list:List<Goods>):List<Goods> {
+        if(list.isEmpty()) return list
+        val favoriteList = favoriteDataSource.getFavoritesById(list.map { it.id })
+        return list.apply{
+            map {
+                it.isFavorite = favoriteList.contains(it.id)
+            }
         }
     }
 }

@@ -34,7 +34,8 @@ class FavoritePagingSource(
 
             LoadResult.Page(
                 data = loadData,
-                prevKey = if (position == 0) null else position - 1,
+                //0페이지 부터 시작함.
+                prevKey = null,//if (position == 0) null else position - 1,
                 nextKey = if (loadData.isNullOrEmpty()) null else position + 1
             )
         }

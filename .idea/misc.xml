@@ -52,29 +52,6 @@
         <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/layout_network_paging_state.xml" value="0.4365942028985507" />
         <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/layout_profile.xml" value="0.3510506798516687" />
         <entry key="..\:/Android/MatchStatistics/app/src/main/res/layout/view_profile.xml" value="0.42346014492753625" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/drawable/bg_banner_index.xml" value="0.1935" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/drawable/bg_gradient.xml" value="0.2765" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/drawable/bg_new_goods.xml" value="0.1935" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.1935" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.1935" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1935" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/drawable/ic_favorite_shadow.xml" value="0.1935" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/drawable/test.xml" value="0.1935" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/activity_main.xml" value="0.3160333642261353" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/fragment_favorite.xml" value="0.33" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/fragment_home.xml" value="0.25" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/fragment_test.xml" value="0.3296875" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_banner.xml" value="0.2439209726443769" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_banner_holder.xml" value="0.315625" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_favorite_goods.xml" value="0.396286231884058" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_goods.xml" value="0.4949201741654572" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_home_goods.xml" value="0.32916666666666666" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_main_goods.xml" value="0.33645833333333336" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_main_header.xml" value="0.452445652173913" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/item_main_header_banner.xml" value="0.452445652173913" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/layout/layout_network_paging_state.xml" value="0.22916666666666666" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/menu/menu_main.xml" value="0.4938461538461538" />
-        <entry key="..\:/Android/Shopping/app/src/main/res/xml/network_security_config.xml" value="0.32916666666666666" />
         <entry key="..\:/Android/mpanySearch/app/src/main/res/layout/activity_main.xml" value="0.24003623188405798" />
         <entry key="..\:/Android/mpanySearch/app/src/main/res/layout/fragment_companies_search.xml" value="0.24003623188405798" />
         <entry key="app/src/main/res/drawable/bg_rate_total_avg.xml" value="0.172" />
@@ -83,9 +60,13 @@
         <entry key="app/src/main/res/layout/fragment_company_detail.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_company_search.xml" value="0.3591485507246377" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.1640625" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.1438919067382812" />
         <entry key="app/src/main/res/layout/fragment_shopping.xml" value="0.1640625" />
         <entry key="app/src/main/res/layout/fragment_statistics.xml" value="0.18958333333333333" />
         <entry key="app/src/main/res/layout/item_banner.xml" value="0.2515625" />
+        <entry key="app/src/main/res/layout/item_favorite_goods.xml" value="0.3070652173913043" />
+        <entry key="app/src/main/res/layout/item_home_goods.xml" value="0.209375" />
+        <entry key="app/src/main/res/layout/item_home_header.xml" value="0.209375" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.1640625" />
       </map>
     </option>

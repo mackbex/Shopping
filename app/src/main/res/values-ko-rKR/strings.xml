@@ -7,5 +7,6 @@
     <string name="content_desc_banner">배너</string>
     <string name="unit_goods_buyging">%,2d개 구매중</string>
     <string name="err_failed_set_favorite">좋아요 등록/해제에 실패했습니다.</string>
+    <string name="title_no_favorite_item">좋아요 등록된 아이템이 없습니다.</string>
 </resources>
 

@@ -60,7 +60,7 @@ class FavoriteRepositoryImpl  @Inject constructor(
         return Pager(
             config = PagingConfig(
                 pageSize = FavoriteDao.FAVORITE_PAGE_SIZE,
-                initialLoadSize = FavoriteDao.FAVORITE_PAGE_SIZE
+                initialLoadSize = FavoriteDao.FAVORITE_PAGE_SIZE,
             ),
             pagingSourceFactory = {
                 FavoritePagingSource(

@@ -11,6 +11,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
+import androidx.recyclerview.widget.RecyclerView
 import com.item.shopping.R
 import com.item.shopping.databinding.FragmentFavoriteBinding
 import com.item.shopping.util.autoCleared
@@ -44,7 +45,7 @@ class FavoriteFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         with(binding) {
             lifecycleOwner = viewLifecycleOwner
-
+            executePendingBindings()
             /**
              * Refresh
              */
@@ -53,11 +54,13 @@ class FavoriteFragment : Fragment() {
             }
 
             with(rcFavorite) {
+                setHasFixedSize(true)
                 adapter = favoriteAdapter.apply {
-
+                    stateRestorationPolicy = RecyclerView.Adapter.StateRestorationPolicy.PREVENT_WHEN_EMPTY
                     addLoadStateListener {
                         if(it.append is LoadState.NotLoading) {
                             swipeFavorite.isRefreshing = false
+                            layoutEmptyFavorite.visibility = if(snapshot().size > 0) View.GONE else View.VISIBLE
                         }
                     }
 
@@ -82,12 +85,13 @@ class FavoriteFragment : Fragment() {
         viewModel.updateFavoriteLiveData.observe(viewLifecycleOwner) {
             when(it){
                 is Resource.Success -> {
-                    val itemIdx = favoriteAdapter.snapshot().indexOfFirst { snapshot ->
-                        snapshot?.id == it.data.id
-                    }
-                    if(itemIdx > -1) {
-                        favoriteAdapter.notifyItemRemoved(itemIdx)
-                    }
+                    favoriteAdapter.refresh()
+//                    val itemIdx = favoriteAdapter.snapshot().indexOfFirst { snapshot ->
+//                        snapshot?.id == it.data.id
+//                    }
+//                    if(itemIdx > -1) {
+//                        favoriteAdapter.notifyItemRemoved(itemIdx)
+//                    }
                 }
                 is Resource.Failure -> {
                     Toast.makeText(requireContext(), getString(R.string.err_failed_set_favorite), Toast.LENGTH_SHORT).show()
@@ -101,7 +105,6 @@ class FavoriteFragment : Fragment() {
                     viewModel.getFavorites().collectLatest { pagingData ->
                         withContext(Dispatchers.Main) {
                             favoriteAdapter.submitData(pagingData)
-                            binding.swipeFavorite.isRefreshing = false
                         }
                     }
                 }

@@ -9,5 +9,6 @@
     <string name="cont_new_goods" translatable="false">NEW</string>
     <string name="btn_retry" translatable="false">Retry</string>
     <string name="err_failed_set_favorite">Failed to add/remove favorite</string>
+    <string name="title_no_favorite_item">No favorite item.</string>
 
 </resources>

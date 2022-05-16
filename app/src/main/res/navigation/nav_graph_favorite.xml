@@ -5,7 +5,7 @@
     android:id="@+id/nav_graph_favorite"
     app:startDestination="@id/favoriteFragment">
 
-    <fragment
+    <keep_state_fragment
         android:id="@+id/favoriteFragment"
         android:name="com.item.shopping.ui.main.favorite.FavoriteFragment"
         android:label="FavoriteFragment"

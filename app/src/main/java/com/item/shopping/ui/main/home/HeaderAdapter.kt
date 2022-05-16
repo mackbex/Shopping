@@ -63,7 +63,8 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
     private val observe = LifecycleEventObserver { _, event ->
             when(event) {
                 Lifecycle.Event.ON_STOP -> {
-                    autoScrollBannerJob.cancel()
+                    if(::autoScrollBannerJob.isInitialized)
+                        autoScrollBannerJob.cancel()
                 }
             }
         }
