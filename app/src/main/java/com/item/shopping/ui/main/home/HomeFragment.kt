@@ -71,6 +71,7 @@ class HomeFragment:Fragment() {
 
                 with(goodsAdapter) {
 
+                    //상품 이미지의 좋아요 클릭시의 이벤트리스너
                     setPostInterface { goods, goodsBinding ->
                         goodsBinding.btnFavorite.setOnClickListener {
                             sharedViewModel.updateFavorite(goods)
@@ -86,7 +87,7 @@ class HomeFragment:Fragment() {
                      */
                     addLoadStateListener {
                         if (it.append is LoadState.NotLoading) {
-                            swipeHome.isRefreshing = false
+                            if(swipeHome.isRefreshing) swipeHome.isRefreshing = false
                         }
                         if (it.append is LoadState.Error || it.prepend is LoadState.Error) {
                             Toast.makeText(
@@ -98,6 +99,9 @@ class HomeFragment:Fragment() {
                     }
                 }
 
+                /**
+                 * 배너, 상품 아이템을 구분하여 GridView의 Span 카운트 적용
+                 */
                 (layoutManager as GridLayoutManager).spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
                     override fun getSpanSize(position: Int): Int {
                         return when (concatAdapter.getItemViewType(position)) {
@@ -113,16 +117,24 @@ class HomeFragment:Fragment() {
         initObservers()
     }
 
+    /**
+     * Fragment Hidden, Show 상태 관리
+     */
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (hidden) {
+            //자동스크롤 취소
             headerAdapter.stopAutoBannerScrolling()
         }
         else {
+            //자동스크롤 재개
             headerAdapter.resumeAutoBannerScrolling()
         }
     }
 
+    /**
+     * Observers 적용
+     */
     private fun initObservers() {
 
         sharedViewModel.updateFavoriteLiveData.observe(viewLifecycleOwner) {
@@ -140,8 +152,6 @@ class HomeFragment:Fragment() {
                     Toast.makeText(requireContext(), getString(R.string.err_failed_set_favorite), Toast.LENGTH_SHORT).show()
                 }
             }
-
-            binding.swipeHome.isRefreshing = false
         }
 
         viewModel.bannerLiveData.observe(viewLifecycleOwner) {
@@ -149,10 +159,12 @@ class HomeFragment:Fragment() {
                 is Resource.Success -> {
                     headerAdapter.setItem(it.data.banners, viewLifecycleOwner)
                     binding.layoutShimmer.stopShimmer()
+                    binding.swipeHome.isRefreshing = false
                 }
                 is Resource.Failure -> {
                     Toast.makeText(requireContext(), getString(R.string.err_failed_load_data), Toast.LENGTH_SHORT).show()
                     binding.layoutShimmer.stopShimmer()
+                    binding.swipeHome.isRefreshing = false
                 }
                 is Resource.Loading -> {
                     binding.layoutShimmer.startShimmer()
@@ -160,6 +172,7 @@ class HomeFragment:Fragment() {
             }
         }
 
+        //페이징 collect
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {

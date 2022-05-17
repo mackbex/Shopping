@@ -11,6 +11,9 @@ import com.item.shopping.R
 import com.item.shopping.databinding.ItemFavoriteGoodsBinding
 import com.item.shopping.domain.model.Favorite
 
+/**
+ * Favorite 페이징 어뎁너
+ */
 class FavoriteAdapter: PagingDataAdapter<Favorite, FavoriteAdapter.ViewHolder>(ItemDiffCallback()) {
 
     private var listener: ((goods: Favorite, binding: ItemFavoriteGoodsBinding) -> Unit)? = null

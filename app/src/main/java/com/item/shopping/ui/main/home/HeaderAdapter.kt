@@ -13,27 +13,23 @@ import com.item.shopping.R
 import com.item.shopping.databinding.ItemHomeHeaderBinding
 import com.item.shopping.domain.model.Banner
 import com.item.shopping.ui.main.home.banner.BannerAdapter
+import com.item.shopping.util.AUTO_SCROLL_BANNER_INTERVAL
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.launch
 
+/**
+ * 배너리스트를 위한 Header container용 어뎁터
+ */
 class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
 
     private var banners:List<Banner> = listOf()
-    private var listener: ((banners: List<Banner>, binding: ItemHomeHeaderBinding) -> Unit)? = null
     private val bannerAdapter by lazy { BannerAdapter() }
     private var viewPageStates: HashMap<Int, Int> = HashMap()
 
-
     private lateinit var autoScrollBannerJob:Job
     private lateinit var lifecycleOwner: LifecycleOwner
-
-    companion object {
-        //자동스크롤 타이머
-        const val AUTO_SCROLL_BANNER_INTERVAL = 5000L
-    }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -47,7 +43,7 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
     }
 
     /**
-     * 헤더 특성상 배너 리스트를 전체로 받기 때문에, notifyDataSetChanged 호출
+     * 헤더 특성상 리사이클러뷰에 한번만 호출되기 때문에, notifyDataSetChanged 호출
      */
     @SuppressLint("NotifyDataSetChanged")
     fun setItem(list: List<Banner>, lifecycleOwner: LifecycleOwner) {
@@ -56,10 +52,6 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-
-    fun setPostInterface(listener: ((banners:List<Banner>, binding:ItemHomeHeaderBinding) -> Unit)?) {
-        this.listener = listener
-    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(banners, position)
@@ -125,30 +117,36 @@ class HeaderAdapter: RecyclerView.Adapter<HeaderAdapter.ViewHolder>() {
             }
 
             binding.setVariable(BR.banner, banners)
-            listener?.invoke(banners, binding)
             binding.executePendingBindings()
             scrollJobCreate(binding)
         }
     }
 
-    //Lifecycle 이용한 자동스크롤.
+    /**
+     *Lifecycle 이용한 자동스크롤.
+     */
     fun scrollJobCreate(binding: ItemHomeHeaderBinding) {
         autoScrollBannerJob = lifecycleOwner.lifecycleScope.launch {
             lifecycleOwner.repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 delay(AUTO_SCROLL_BANNER_INTERVAL)
                 ensureActive()
-//                Log.d("TEST","BANNER_RUNNING")
                 binding.vpBanner.setCurrentItem(binding.vpBanner.currentItem + 1, true)
                 autoScrollBannerJob.cancel()
             }
         }
     }
 
+    /**
+     * 배너 자동 스크롤 중지
+     */
     fun stopAutoBannerScrolling() {
         if(::autoScrollBannerJob.isInitialized)
             autoScrollBannerJob.cancel()
     }
 
+    /**
+     * 배너 자동 스크롤 재개
+     */
     @SuppressLint("NotifyDataSetChanged")
     fun resumeAutoBannerScrolling() {
         notifyDataSetChanged()

@@ -25,6 +25,10 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
+/**
+ * Favorite Fragment
+ */
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
@@ -34,8 +38,8 @@ class FavoriteFragment : Fragment() {
 
     private val favoriteAdapter: FavoriteAdapter by lazy { FavoriteAdapter() }
 
-    private var prevFavoriteItemCnt = 0
-
+    //Favorite 리스트 비교용 해시코드
+    private var prevFavoriteListHashCode = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,17 +64,22 @@ class FavoriteFragment : Fragment() {
             with(rcFavorite) {
                 setHasFixedSize(true)
                 adapter = favoriteAdapter.apply {
+                    //Paging에서 상품 로드 완료시 갯수를 체크하여 0개면 상품이 없다고 표시
                     addLoadStateListener {
-                        if(it.append is LoadState.NotLoading) {
-                            swipeFavorite.isRefreshing = false
-                            layoutEmptyFavorite.visibility = if(snapshot().size <= 0) View.VISIBLE else View.GONE
+                        if(
+                            (it.append is LoadState.NotLoading || it.append is LoadState.Error)
+                            || (it.prepend is LoadState.NotLoading || it.prepend is LoadState.Error)
+                        ) {
+                            binding.tvEmptyFavorite.visibility = if (favoriteAdapter.snapshot().size <= 0) View.VISIBLE else View.GONE
+                            if (binding.swipeFavorite.isRefreshing) binding.swipeFavorite.isRefreshing = false
                         }
                     }
-
+                    // 로드 실패 시 하단 Retry버튼 표시 및 로딩중일 시 Progressbar용 하단 추가어뎁터
                     withLoadStateFooter(
                         footer = PagingLoadStateAdapter(this)
                     )
 
+                    //상품 이미지의 좋아요 클릭시의 이벤트리스너
                     setPostInterface { favorite, favoriteItemBinding ->
                         favoriteItemBinding.btnFavorite.setOnClickListener {
                             sharedViewModel.updateFavorite(favorite.mapToGoods())
@@ -83,18 +92,27 @@ class FavoriteFragment : Fragment() {
         initObservers()
     }
 
+    /**
+     * Fragment가 화면에 표시될 때의 이벤트 정리.
+     * Ex: 상품 화면에서 좋아요 수정이 일어나면, Favorite 화면은 최상단으로 이동.
+     */
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         if (hidden) {
-            prevFavoriteItemCnt = favoriteAdapter.snapshot().size
+            prevFavoriteListHashCode = favoriteAdapter.snapshot().hashCode()
         }
         else {
-            if(prevFavoriteItemCnt != favoriteAdapter.snapshot().size) {
-                binding.rcFavorite.scrollToPosition(0)
+            if(prevFavoriteListHashCode != favoriteAdapter.snapshot().hashCode()) {
+                binding.rcFavorite.post {
+                    binding.rcFavorite.scrollToPosition(0)
+                }
             }
         }
     }
 
+    /**
+     * Observers 적용
+     */
     private fun initObservers() {
 
         sharedViewModel.updateFavoriteLiveData.observe(viewLifecycleOwner) {
@@ -108,7 +126,7 @@ class FavoriteFragment : Fragment() {
             }
         }
 
-
+        //페이징 collect
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {

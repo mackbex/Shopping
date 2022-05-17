@@ -4,6 +4,10 @@ import com.item.shopping.data.model.local.FavoriteEntity
 import com.item.shopping.data.source.local.dao.FavoriteDao
 import javax.inject.Inject
 
+/**
+ * Favorite DataSource
+ */
+
 class FavoriteDataSource @Inject constructor(
     private val favoriteDao: FavoriteDao,
 ){
@@ -17,10 +21,6 @@ class FavoriteDataSource @Inject constructor(
 
     suspend fun getFavoriteItems(index:Int, loadSize:Int):List<FavoriteEntity> {
         return favoriteDao.getFavoriteItems(index, loadSize)
-    }
-
-    suspend fun getAllId():List<Int> {
-        return favoriteDao.getAllId()
     }
 
     suspend fun getFavoritesById(list:List<Int>):List<Int> {

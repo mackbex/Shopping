@@ -22,6 +22,9 @@ class SharedViewModel @Inject constructor(
     private var _updateFavoriteLiveData = MutableLiveData<Resource<Goods>>().apply { value = Resource.Loading }
     val updateFavoriteLiveData:LiveData<Resource<Goods>> = _updateFavoriteLiveData
 
+    /**
+     * Favorite 아이템 업데이트
+     */
     fun updateFavorite(goods: Goods) {
         viewModelScope.launch {
             _updateFavoriteLiveData.postValue(manageFavoriteUseCase.updateFavorite(goods))

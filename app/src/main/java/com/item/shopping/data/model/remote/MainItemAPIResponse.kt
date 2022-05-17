@@ -5,6 +5,11 @@ import com.item.shopping.domain.model.Banner
 import com.item.shopping.domain.model.Goods
 import com.item.shopping.domain.model.MainItem
 
+
+/**
+ * remote DataSource 모델
+ */
+
 data class MainItemAPIResponse(
     @SerializedName("banners")
     val banner:List<BannerResponse>,

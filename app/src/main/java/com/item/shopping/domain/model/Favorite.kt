@@ -1,6 +1,8 @@
 package com.item.shopping.domain.model
 
-
+/**
+ * Favorite 모델
+ */
 data class Favorite(
     val id:Int,
     val name:String,

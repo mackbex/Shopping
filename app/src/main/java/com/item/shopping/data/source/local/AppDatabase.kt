@@ -5,10 +5,13 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.item.shopping.data.DATABASE_NAME
 import com.item.shopping.data.model.local.FavoriteEntity
 import com.item.shopping.data.source.local.dao.FavoriteDao
-import com.item.shopping.util.DATABASE_NAME
 
+/**
+ * Room database
+ */
 @Database(entities = [FavoriteEntity::class], version = 1)
 @TypeConverters(TypeConverter::class)
 abstract class AppDatabase : RoomDatabase() {

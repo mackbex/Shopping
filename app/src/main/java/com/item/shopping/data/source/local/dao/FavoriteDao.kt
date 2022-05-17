@@ -3,15 +3,13 @@ package com.item.shopping.data.source.local.dao
 import androidx.room.*
 import com.item.shopping.data.model.local.FavoriteEntity
 
+/**
+ * Favorite Local Room Dao
+ */
 @Dao
 interface FavoriteDao {
 
-    companion object {
-        const val FAVORITE_PAGE_SIZE=10
-    }
 
-    @Query("SELECT id FROM favorite")
-    suspend fun getAllId():List<Int>
 
     @Query("select * from favorite order by created_date DESC LIMIT :loadSize OFFSET :index * :loadSize")
     suspend fun getFavoriteItems(index : Int, loadSize : Int) : List<FavoriteEntity>

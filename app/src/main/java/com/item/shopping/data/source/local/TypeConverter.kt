@@ -2,7 +2,9 @@ package com.item.shopping.data.source.local
 import androidx.room.TypeConverter
 import java.util.*
 
-
+/**
+ * Room TypeConverter
+ */
 class TypeConverter {
 
     @TypeConverter

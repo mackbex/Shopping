@@ -8,6 +8,9 @@ import androidx.navigation.NavOptions
 import androidx.navigation.Navigator
 import androidx.navigation.fragment.FragmentNavigator
 
+/**
+ * Fragment show, hide적용을 위한 커스텀 네비게이터
+ */
 @Navigator.Name("keep_state_fragment")
 class KeepStateNavigator(
     private val context: Context,

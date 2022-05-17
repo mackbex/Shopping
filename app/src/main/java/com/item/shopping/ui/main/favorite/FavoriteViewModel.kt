@@ -12,6 +12,9 @@ class FavoriteViewModel @Inject constructor(
     private val manageFavoriteUseCase: ManageFavoriteUseCase
 ):ViewModel(){
 
+    /**
+     * Favorite 리스트 collect
+     */
     fun getFavorites() = manageFavoriteUseCase.getFavoriteList().cachedIn(viewModelScope)
 
 }

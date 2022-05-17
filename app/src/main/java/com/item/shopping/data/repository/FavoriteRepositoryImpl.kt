@@ -3,6 +3,7 @@ package com.item.shopping.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.item.shopping.data.FAVORITE_PAGE_SIZE
 import com.item.shopping.data.model.local.FavoriteEntity
 import com.item.shopping.data.source.local.dao.FavoriteDao
 import com.item.shopping.data.source.local.favorite.FavoriteDataSource
@@ -18,10 +19,14 @@ import kotlinx.coroutines.withContext
 import java.util.*
 import javax.inject.Inject
 
+/**
+ * Favorite Repo.
+ */
 class FavoriteRepositoryImpl  @Inject constructor(
     private val favoriteDataSource: FavoriteDataSource,
     @AppModule.IODispatcher private val defaultDispatcher: CoroutineDispatcher
 ):FavoriteRepository {
+
 
     override suspend fun addFavorite(goods: Goods) = withContext(defaultDispatcher) {
         return@withContext try{
@@ -56,11 +61,14 @@ class FavoriteRepositoryImpl  @Inject constructor(
         }
     }
 
+    /**
+     * 페이징용 Method. MVVM 아키텍처에 기반한 안드로이드 의존도를 없애기 위해, flow로 리턴.
+     */
     override fun getFavorPagerItems(): Flow<PagingData<Favorite>> {
         return Pager(
             config = PagingConfig(
-                pageSize = FavoriteDao.FAVORITE_PAGE_SIZE,
-                initialLoadSize = FavoriteDao.FAVORITE_PAGE_SIZE,
+                pageSize = FAVORITE_PAGE_SIZE,
+                initialLoadSize = FAVORITE_PAGE_SIZE,
             ),
             pagingSourceFactory = {
                 FavoritePagingSource(
@@ -70,29 +78,4 @@ class FavoriteRepositoryImpl  @Inject constructor(
             }
         ).flow
     }
-
-    override suspend fun getAllId() = withContext(defaultDispatcher) {
-        return@withContext try {
-            Resource.Success(favoriteDataSource.getAllId())
-        }
-        catch (e:Exception) {
-            Resource.Failure(e.message)
-        }
-    }
-
-    override suspend fun getFavoritesById(list: List<Int>) = withContext(defaultDispatcher) {
-        return@withContext try {
-            val res = if(list.isNotEmpty()) {
-                favoriteDataSource.getFavoritesById(list)
-            }
-            else {
-                favoriteDataSource.getAllId()
-            }
-            Resource.Success(res)
-        }
-        catch (e:Exception) {
-            Resource.Failure(e.message)
-        }
-    }
-
 }

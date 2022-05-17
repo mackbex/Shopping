@@ -2,10 +2,10 @@ package com.item.shopping.data.source.remote.shopping
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.item.shopping.data.GOODS_PAGE_SIZE
 import com.item.shopping.data.model.remote.GoodsResponse
 import com.item.shopping.data.model.remote.mapToDomain
 import com.item.shopping.data.source.local.favorite.FavoriteDataSource
-import com.item.shopping.data.source.remote.service.ShoppingService.Companion.GOODS_PAGE_SIZE
 import com.item.shopping.domain.model.Goods
 import com.item.shopping.util.wrapper.Resource
 import com.item.shopping.util.wrapper.map
@@ -53,6 +53,7 @@ class GoodsPagingSource constructor(
 
                     LoadResult.Page(
                         data = data,
+                        //0페이지 부터 시작함. 첫페이지부터 뿌려질 예정이기 때문에 previewKey는 필요없음.
                         prevKey = null,//if(page - SHOPPING_PAGE_SIZE < 0) null else page - SHOPPING_PAGE_SIZE,
                         nextKey = nextKey
                     )

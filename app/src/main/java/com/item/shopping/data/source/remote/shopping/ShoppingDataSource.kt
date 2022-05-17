@@ -4,6 +4,9 @@ import com.item.shopping.data.source.remote.service.ShoppingService
 import com.item.shopping.util.getResult
 import javax.inject.Inject
 
+/**
+ * Remote DataSource
+ */
 class ShoppingDataSource @Inject constructor(
     private val shoppingService: ShoppingService
 ) {

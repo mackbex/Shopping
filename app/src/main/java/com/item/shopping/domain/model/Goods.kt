@@ -1,6 +1,8 @@
 package com.item.shopping.domain.model
 
-
+/**
+ * 상품 모델
+ */
 data class Goods(
     val id:Int,
     val name:String,

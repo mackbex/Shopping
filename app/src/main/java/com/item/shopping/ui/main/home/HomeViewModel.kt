@@ -21,13 +21,18 @@ class HomeViewModel @Inject constructor(
         getMainItems()
     }
 
+    /**
+     * 메인 아이템 호출
+     */
     fun getMainItems() {
         viewModelScope.launch {
             _bannerLiveData.postValue(Resource.Loading)
             _bannerLiveData.postValue(getMainPageListsUseCase.getMainItem())
         }
     }
-
+    /**
+     * Goods 리스트 collect
+     */
     fun getGoods() = getMainPageListsUseCase.getGoods().cachedIn(viewModelScope)
 
 }

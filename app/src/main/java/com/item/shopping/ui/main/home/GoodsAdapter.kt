@@ -11,6 +11,9 @@ import com.item.shopping.R
 import com.item.shopping.databinding.ItemHomeGoodsBinding
 import com.item.shopping.domain.model.Goods
 
+/**
+ * 메인 상품 어뎁터
+ */
 class GoodsAdapter: PagingDataAdapter<Goods, GoodsAdapter.ViewHolder>(ItemDiffCallback()) {
 
     private var listener: ((goods:Goods, binding:ItemHomeGoodsBinding) -> Unit)? = null

@@ -10,7 +10,7 @@ import java.util.*
 
 
 /**
- * ID로 아이템을 조회하는 API는 제공되지 않았기 때문에 가격, 이미지 등 전체 저장.
+ * Local DataSource 엔티티
  */
 @Entity(tableName = "favorite")
 data class FavoriteEntity(

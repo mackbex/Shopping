@@ -9,7 +9,7 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 
 /**
- * 페이저용 데이터소스
+ * Favorite 페이저용 데이터소스
  */
 class FavoritePagingSource(
     private val favoriteDataSource: FavoriteDataSource,
@@ -32,8 +32,7 @@ class FavoritePagingSource(
 
             LoadResult.Page(
                 data = loadData,
-                //0페이지 부터 시작함.
-                prevKey = null,//if (position == 0) null else position - 1,
+                prevKey = if (position == 0) null else position - 1,
                 nextKey = if (loadData.isNullOrEmpty()) null else position + 1
             )
         }

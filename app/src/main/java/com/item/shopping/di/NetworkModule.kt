@@ -21,7 +21,9 @@ import javax.inject.Singleton
 import javax.net.ssl.SSLContext
 import javax.net.ssl.X509TrustManager
 
-
+/**
+ * Network 모듈.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 
@@ -32,7 +34,7 @@ object NetworkModule {
     fun provideOkHttpClient() : OkHttpClient {
 
         /**
-         * API 19 TLS 1.3 지원을 위한 InternalSSLFactory 적용
+         * API Low버전 TLS 1.3 지원을 위한 InternalSSLFactory 적용
          */
         Security.insertProviderAt(Conscrypt.newProvider(), 1)
 
@@ -64,7 +66,7 @@ object NetworkModule {
         okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl(ShoppingService.BASE_URL_V1)
+            .baseUrl(BASE_URL_V1)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

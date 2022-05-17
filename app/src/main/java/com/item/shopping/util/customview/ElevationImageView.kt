@@ -14,7 +14,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import com.item.shopping.R
 
 /**
- * 그림자 효과 이미지뷰
+ * 그림자 효과 이미지뷰결 (좋아요 표시용)
  */
 open class ElevationImageView : AppCompatImageView {
 
