@@ -4,11 +4,11 @@ import androidx.paging.PagingSource
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.item.shopping.data.GOODS_PAGE_SIZE
 import com.item.shopping.data.model.remote.mapToDomain
 import com.item.shopping.data.repository.FavoriteRepositoryImpl
 import com.item.shopping.data.source.local.AppDatabase
 import com.item.shopping.data.source.local.favorite.FavoriteDataSource
-import com.item.shopping.data.source.remote.service.ShoppingService.Companion.GOODS_PAGE_SIZE
 import com.item.shopping.data.source.remote.shopping.GoodsPagingSource
 import com.item.shopping.data.source.remote.shopping.ShoppingDataSource
 import com.item.shopping.di.NetworkModule

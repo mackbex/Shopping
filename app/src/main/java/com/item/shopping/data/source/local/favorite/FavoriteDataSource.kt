@@ -26,4 +26,8 @@ class FavoriteDataSource @Inject constructor(
     suspend fun getFavoritesById(list:List<Int>):List<Int> {
         return favoriteDao.getFavoriteByIds(list.toIntArray())
     }
+
+    suspend fun getAllId():List<Int> {
+        return favoriteDao.getAllId()
+    }
 }

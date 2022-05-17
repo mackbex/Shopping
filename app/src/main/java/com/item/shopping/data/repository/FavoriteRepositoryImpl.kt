@@ -78,4 +78,13 @@ class FavoriteRepositoryImpl  @Inject constructor(
             }
         ).flow
     }
+
+    override suspend fun getAllId() = withContext(defaultDispatcher) {
+        return@withContext try {
+            Resource.Success(favoriteDataSource.getAllId())
+        }
+        catch (e:Exception) {
+            Resource.Failure(e.message)
+        }
+    }
 }

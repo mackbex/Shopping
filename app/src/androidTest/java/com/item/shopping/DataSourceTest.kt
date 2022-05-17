@@ -17,10 +17,9 @@ class DataSourceTest {
 
 
     @Test
-    fun `test goods service`() = runTest {
+    fun test_goods_service() = runTest {
         var goods = shoppingDataSource.getMainItem()
         Assert.assertTrue(goods is Resource.Success<*>)
     }
-
 
 }

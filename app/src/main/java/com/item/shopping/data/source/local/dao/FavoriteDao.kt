@@ -9,7 +9,8 @@ import com.item.shopping.data.model.local.FavoriteEntity
 @Dao
 interface FavoriteDao {
 
-
+    @Query("SELECT id FROM favorite")
+    suspend fun getAllId():List<Int>
 
     @Query("select * from favorite order by created_date DESC LIMIT :loadSize OFFSET :index * :loadSize")
     suspend fun getFavoriteItems(index : Int, loadSize : Int) : List<FavoriteEntity>

@@ -22,5 +22,11 @@ interface FavoriteRepository {
      * Favorite 화면에 뿌려질 Paging3용 아이템 로드 Method.
      */
     fun getFavorPagerItems(): Flow<PagingData<Favorite>>
+
+    /**
+     * 전체 favorite id 가져오는 Method
+     */
+    suspend fun getAllId():Resource<List<Int>>
+
 }
 
