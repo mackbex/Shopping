@@ -18,6 +18,6 @@ class GetMainPageItemsUseCase @Inject constructor(
     /**
      * 상품들을 호출한다.
      */
-    fun getGoods() = shoppingRepository.getGoods()
+    fun getGoodsPagerItems() = shoppingRepository.getGoodsPagerItems()
 
 }

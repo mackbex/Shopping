@@ -176,7 +176,7 @@ class HomeFragment:Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {
-                    viewModel.getGoods().collectLatest { pagingData ->
+                    viewModel.getGoodsPagerItems().collectLatest { pagingData ->
                         goodsAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
                     }
                 }

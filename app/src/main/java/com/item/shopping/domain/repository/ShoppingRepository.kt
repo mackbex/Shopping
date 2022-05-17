@@ -15,5 +15,5 @@ interface ShoppingRepository {
     /**
      * 스크롤 시 추가로드를 위한 Paging Method
      */
-    fun getGoods(): Flow<PagingData<Goods>>
+    fun getGoodsPagerItems(): Flow<PagingData<Goods>>
 }

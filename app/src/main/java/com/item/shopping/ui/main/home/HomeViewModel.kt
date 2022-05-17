@@ -33,6 +33,6 @@ class HomeViewModel @Inject constructor(
     /**
      * Goods 리스트 collect
      */
-    fun getGoods() = getMainPageListsUseCase.getGoods().cachedIn(viewModelScope)
+    fun getGoodsPagerItems() = getMainPageListsUseCase.getGoodsPagerItems().cachedIn(viewModelScope)
 
 }

@@ -36,7 +36,7 @@ class ShoppingRepositoryImpl @Inject constructor(
     /**
      * 페이징용 Method. MVVM 아키텍처에 기반한 안드로이드 의존도를 없애기 위해, flow로 리턴.
      */
-    override fun getGoods(): Flow<PagingData<Goods>> {
+    override fun getGoodsPagerItems(): Flow<PagingData<Goods>> {
          return Pager(
             config = PagingConfig(
                 pageSize = GOODS_PAGE_SIZE,
