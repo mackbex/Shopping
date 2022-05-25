@@ -47,10 +47,12 @@ class FavoriteFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         with(binding) {
             lifecycleOwner = viewLifecycleOwner
             executePendingBindings()
@@ -88,7 +90,6 @@ class FavoriteFragment : Fragment() {
                 }
             }
         }
-
         initObservers()
     }
 
@@ -130,10 +131,8 @@ class FavoriteFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {
-                    viewModel.getFavorites().collectLatest { pagingData ->
-                        withContext(Dispatchers.Main) {
-                            favoriteAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
-                        }
+                    viewModel.favoriteState.collectLatest { pagingData ->
+                        favoriteAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
                     }
                 }
             }

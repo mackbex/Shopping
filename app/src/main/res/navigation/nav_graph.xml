@@ -3,21 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@+id/homeFragment">
+    app:startDestination="@+id/home">
 
 
-    <keep_state_fragment
-        android:id="@+id/homeFragment"
-        android:name="com.item.shopping.ui.main.home.HomeFragment"
-        android:label="ShoppingFragment"
-        tools:layout="@layout/fragment_home"
-        />
+    <include app:graph="@navigation/home"/>
+    <include app:graph="@navigation/favorite"/>
 
-    <keep_state_fragment
-        android:id="@+id/favoriteFragment"
-        android:name="com.item.shopping.ui.main.favorite.FavoriteFragment"
-        android:label="FavoriteFragment"
-        tools:layout="@layout/fragment_favorite"
-        />
 
 </navigation>

@@ -42,13 +42,13 @@ class HomeFragment:Fragment() {
         )
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
@@ -176,7 +176,7 @@ class HomeFragment:Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.CREATED) {
                 launch {
-                    viewModel.getGoodsPagerItems().collectLatest { pagingData ->
+                    viewModel.goodsState.collectLatest { pagingData ->
                         goodsAdapter.submitData(viewLifecycleOwner.lifecycle, pagingData)
                     }
                 }
